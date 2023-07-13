@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block head %}
+    <title> Stores </title>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+        <script src=" {% static 'js/apicall.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <h2> Payment  </h2>
+  <hr>
+  <div style="padding-top:5px; padding-left:20px; padding-right:20px;">
+      <h2>Final amount : {{cost}} Rs.</h2>
+      <form action="/webapp/payment" method="post">
+          {% csrf_token %}
+          <input value="{{ address_id }}" name="id" style="display:none">
+          <input type="submit" value='Make payment'>
+      </form>
+  </div>
+  <br>
+</div>
+<br>
+<br>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+</html>

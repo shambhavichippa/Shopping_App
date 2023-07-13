@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block head %}
+    <title> Stores </title>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+        <script src=" {% static 'js/apicall.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <h2> Cart </h2>
+  <hr>
+  <div style="padding-top:5px; padding-left:20px; padding-right:20px;">
+      {% for pro in products %}
+      <form action="/webapp/products" method="post">
+        <h3>Name: {{pro.name}}</h3>
+          <h3>Price: {{pro.price}} Rs.</h3>
+          <h3>Available Quantity: {{pro.quantity}}</h3>
+        <input style="display:none;" id="avl_quant{{pro.id}}" value="{{ pro.quantity }}">
+          <input style="display:none;" name="product_id" value="{{ pro.id }}">
+          <input id="buy_quant{{pro.id}}" placeholder="Enter Quantity less then Available Quantity">
+        <input type="button" onclick="add_to_cart({{ pro.id }})" value="Buy">
+      </form>
+      {% endfor %}
+  </div>
+  <br>
+</div>
+<br>
+<br>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+</html>

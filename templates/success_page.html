@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block head %}
+    <title> Stores </title>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+        <script src=" {% static 'js/apicall.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2>Order Created Successfully</h2>
+    <h4>Order Id: {{order_id}}</h4>
+</div>
+<br>
+<br>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+</html>

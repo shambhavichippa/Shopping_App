@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head >
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+        <script src="{% static 'js/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'js/user_login.js' %}"></script>
+        <title>Stores</title>
+    </head>
+<body class="loginBackground">
+<div class="loginScreen">
+
+    <div>
+        <img src="{% static 'images/img.png' %}" alt="sample" class="HEADNAME">
+    </div>
+    <div class="loginForm">
+            <div class="loginForm">
+                <br>
+                <label class="loginfont">USER LOGIN</label>
+                <br>
+                <!-- <label class="loginfont1">Username</label>   -->
+                <br> 
+                <br>
+                <input id="username" class="" type="text" placeholder="Enter Email" name="username" required>
+                <br> 
+                <br>   
+                <!-- <label class="loginfont1">Password</label>    -->
+                <br> 
+                <br>
+                <input id="password" class="" type="password" placeholder="Enter Password" name="password" required>
+                <i class="far fa-eye-slash showoff" id="togglePassword" onclick="passfunc()"></i>
+                <br>
+                <br>
+                <span id="error_msg" style="display:none;color: red;"></span>
+                <br>
+                <button class="loginButton" onclick="login_ajax()">LOGIN</button>
+                <br> 
+                <br> 
+                <br>
+<!--                <a class="forgot" href="#">Forgot my password</a>-->
+                <a class="forgot" href="/signup">SIGN UP</a>
+            </div>
+    </div> 
+</div>
+</body>
+</html>

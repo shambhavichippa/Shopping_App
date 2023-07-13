@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block head %}
+    <title> Stores </title>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+        <script src=" {% static 'js/apicall.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <h2> Welcome  </h2>
+  <hr>
+  <div style="padding-top:5px; padding-left:20px; padding-right:20px;">
+      {% for i in data %}
+        <h3>Name: {{i.product_id__name}}</h3>
+          <h3>Price: {{i.product_id__price}} Rs.</h3>
+            {% if i.product_id__quantity == 0 %}
+                <h3>Product not available</h3>
+            {%elif i.product_id__quantity < i.quantity %}
+                <h3>Not enough quantity to buy, available quantity is {{i.product_id__quantity}}</h3>
+            {% else %}
+                  <h3>Available Quantity: {{i.product_id__quantity}}</h3>
+                          <h3> Quantity: {{i.quantity}}</h3>
+            {% endif %}
+                    <h3>Total Cost: {{i.cost}}</h3>
+            <hr>
+
+      {% endfor %}
+      <br><br>
+      <h2>Final amount : {{cost}}</h2>
+      <button><a href="/webapp/checkout">Checkout</a></button>
+  </div>
+  <br>
+</div>
+<br>
+<br>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+</html>

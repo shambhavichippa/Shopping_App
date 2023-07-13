@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block head %}
+    <title> Stores </title>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+        <script src=" {% static 'js/apicall.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <h2> Checkout </h2>
+  <hr>
+  <div style="padding-top:5px; padding-left:20px; padding-right:20px;">
+      {% if address %}
+        {% for i in address %}
+          <h3>Address: {{i.address}}</h3>
+            {% if i.default %}
+                Default: <input name="name1" type="checkbox" checked value="on"/>
+            {% else %}
+                Default: <input name="name2" type="checkbox"value="off"/>
+            {% endif %}
+            <form action="/webapp/proceed_to_payment" method="post">
+                {% csrf_token %}
+                Proceed with this address:
+                <input style="display:none" value="{{i.id}}" name="id">
+                <input type="submit" value="Submit">
+            </form>
+          <hr>
+        {% endfor %}
+      {% else %}
+        <h3>No address found</h3>
+        <form action="/webapp/add_address" method="post">
+            {% csrf_token %}
+            <input name="address" placeholder="Enter address">
+            <input type="submit" value="Submit">
+        </form>
+      {% endif %}
+  </div>
+  <br>
+</div>
+<br>
+<br>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+</html>
